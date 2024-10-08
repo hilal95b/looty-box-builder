@@ -1,0 +1,44 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "fac896375ae5a17b64088a65dd57405f"
+name = "Looty Box"
+handle = "looty-box"
+application_url = "https://trusts-adelaide-toddler-subscribe.trycloudflare.com"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "looty-test.myshopify.com"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = ""
+
+[auth]
+redirect_urls = [
+  "https://trusts-adelaide-toddler-subscribe.trycloudflare.com/auth/callback",
+  "https://trusts-adelaide-toddler-subscribe.trycloudflare.com/auth/shopify/callback",
+  "https://trusts-adelaide-toddler-subscribe.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-10"
+
+  [[webhooks.subscriptions]]
+  uri = "https://example.com/webhooks/customers/data_request"
+  compliance_topics = [ "customers/data_request" ]
+
+  [[webhooks.subscriptions]]
+  uri = "https://example.com/webhooks/customers/redact"
+  compliance_topics = [ "customers/redact" ]
+
+  [[webhooks.subscriptions]]
+  uri = "https://example.com/webhooks/shop/redact"
+  compliance_topics = [ "shop/redact" ]
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "https://example.com/webhooks/app/uninstalled"
+
+[pos]
+embedded = false
