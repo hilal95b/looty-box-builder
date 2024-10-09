@@ -3,7 +3,7 @@
 client_id = "fac896375ae5a17b64088a65dd57405f"
 name = "Looty Box"
 handle = "looty-box"
-application_url = "https://trusts-adelaide-toddler-subscribe.trycloudflare.com"
+application_url = "https://diamond-modeling-bradley-ol.trycloudflare.com"
 embedded = true
 
 [build]
@@ -16,9 +16,9 @@ scopes = ""
 
 [auth]
 redirect_urls = [
-  "https://trusts-adelaide-toddler-subscribe.trycloudflare.com/auth/callback",
-  "https://trusts-adelaide-toddler-subscribe.trycloudflare.com/auth/shopify/callback",
-  "https://trusts-adelaide-toddler-subscribe.trycloudflare.com/api/auth/callback"
+  "https://diamond-modeling-bradley-ol.trycloudflare.com/auth/callback",
+  "https://diamond-modeling-bradley-ol.trycloudflare.com/auth/shopify/callback",
+  "https://diamond-modeling-bradley-ol.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
