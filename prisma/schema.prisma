@@ -30,3 +30,45 @@ model Session {
   collaborator  Boolean?  @default(false)
   emailVerified Boolean?  @default(false)
 }
+
+model Box {
+  id          Int       @id @default(autoincrement())
+  name        String
+  price       Float
+  maxItems    Int
+  boxItems    BoxItem[]
+  addOns      AddOn[]
+}
+
+model BoxItem {
+  id          Int       @id @default(autoincrement())
+  boxId       Int
+  box         Box       @relation(fields: [boxId], references: [id])
+  products    BoxItemProduct[] // Intermediate relation table for many-to-many relationship with Product
+}
+
+model Product {
+  id          Int       @id @default(autoincrement())
+  name        String
+  price       Float
+  boxItems    BoxItemProduct[] // Intermediate relation table for many-to-many relationship with BoxItem
+}
+
+model AddOn {
+  id          Int       @id @default(autoincrement())
+  name        String
+  price       Float
+  imageUrl    String
+  message     String?
+  boxId       Int
+  box         Box       @relation(fields: [boxId], references: [id])
+}
+
+model BoxItemProduct {
+  id         Int      @id @default(autoincrement())
+  boxItemId  Int
+  productId  Int
+  boxItem    BoxItem  @relation(fields: [boxItemId], references: [id])
+  product    Product  @relation(fields: [productId], references: [id])
+}
+

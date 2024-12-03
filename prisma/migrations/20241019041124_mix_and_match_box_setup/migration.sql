@@ -1,0 +1,41 @@
+-- CreateTable
+CREATE TABLE "Box" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NOT NULL,
+    "price" REAL NOT NULL,
+    "maxItems" INTEGER NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "BoxItem" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "boxId" INTEGER NOT NULL,
+    CONSTRAINT "BoxItem_boxId_fkey" FOREIGN KEY ("boxId") REFERENCES "Box" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Product" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NOT NULL,
+    "price" REAL NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "AddOn" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT NOT NULL,
+    "price" REAL NOT NULL,
+    "imageUrl" TEXT NOT NULL,
+    "message" TEXT,
+    "boxId" INTEGER NOT NULL,
+    CONSTRAINT "AddOn_boxId_fkey" FOREIGN KEY ("boxId") REFERENCES "Box" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "BoxItemProduct" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "boxItemId" INTEGER NOT NULL,
+    "productId" INTEGER NOT NULL,
+    CONSTRAINT "BoxItemProduct_boxItemId_fkey" FOREIGN KEY ("boxItemId") REFERENCES "BoxItem" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT "BoxItemProduct_productId_fkey" FOREIGN KEY ("productId") REFERENCES "Product" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
